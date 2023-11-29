@@ -10,6 +10,9 @@ import GoogleProvider from 'next-auth/providers/google'
 
 export const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(prisma),
+  pages: {
+    signIn: '/login'
+  },
   session: {
     strategy: 'jwt'
   },

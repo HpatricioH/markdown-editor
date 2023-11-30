@@ -14,7 +14,7 @@ export default function LoginForm () {
 
   return (
     <div>
-      <button onClick={async () => await signIn('google')} type="button">Sign in with Google</button>
+      <button onClick={() => { signIn('google') }} type="button">Sign in with Google</button>
     </div>
   )
 }

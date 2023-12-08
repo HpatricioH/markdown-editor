@@ -4,7 +4,7 @@ import './globals.css'
 import { AuthProvider } from '@/auth/providers'
 import Header from './components/Header/Header'
 import authOptions from '@/auth/authOptions'
-import { getServerSession } from 'next-auth'
+import { type NextAuthOptions, getServerSession } from 'next-auth'
 import LoginPage from '@/app/login/page'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -19,7 +19,7 @@ export default async function RootLayout ({
 }: {
   children: React.ReactNode
 }) {
-  const session = await getServerSession(authOptions)
+  const session = await getServerSession(authOptions as NextAuthOptions)
 
   return (
     <html lang="en">

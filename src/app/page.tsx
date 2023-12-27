@@ -1,5 +1,6 @@
 import SignOutButton from '@/core/utils/SignOutButton'
 import VisibilityBar from './components/VisibilityBar/VisibilityBar'
+import MarkDownEditor from './components/MarkDownEditor/MarkDownEditor'
 
 export default async function Home () {
   return (
@@ -24,11 +25,7 @@ export default async function Home () {
             />
           </a>
         </div> */}
-        <form action="">
-          <div className='min-h-screen max-w-5xl'>
-            <textarea name="" id="" cols={39} rows={30.5} className='bg-[#151619]'></textarea>
-          </div>
-        </form>
+        <MarkDownEditor />
 
         <div className=" ">
           <SignOutButton/>

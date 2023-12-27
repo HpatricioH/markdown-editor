@@ -9,16 +9,16 @@ export default function VisibilityBar () {
       {/* <Image
         src={'/icons/icon-hide-preview.svg'}
         alt='Preview Icon'
-        width={20}
-        height={13}
-        className='flex-grow-1'
+        width={21}
+        height={5}
+        className='flex-grow-1 p-1'
       /> */}
       <Image
         src={'/icons/icon-show-preview.svg'}
         alt='Preview Icon'
-        width={24}
+        width={25}
         height={5}
-        className='flex-grow-1'
+        className='flex-grow-1 p-1'
       />
     </section>
   )

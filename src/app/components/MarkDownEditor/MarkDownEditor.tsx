@@ -1,18 +1,19 @@
 'use client'
+
 import 'easymde/dist/easymde.min.css'
-import { useEditorInput } from '@/app/lib/store/useEditorInput'
+import { useVisibilityBar } from '@/app/lib/store/useVisibilityBar'
+import MarkDownResult from './MarkDownResult'
+import MarkDownInput from './MarkDownInput'
 
 export default function MarkDownEditor () {
-  const { setMarkdownInput } = useEditorInput()
+  const { isPreview } = useVisibilityBar()
 
   return (
     <section className="flex">
       <div className="w-full">
-        <textarea
-          autoFocus
-          onChange={(event) => { setMarkdownInput(event.target.value) }}
-          className='dark:bg-[#151619] dark:text-[#FFF] focus:outline-0 text-[1rem] h-screen w-full p-2'>
-        </textarea>
+        {isPreview
+          ? <MarkDownResult/>
+          : <MarkDownInput/>}
       </div>
     </section>
   )

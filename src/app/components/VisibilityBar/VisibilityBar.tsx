@@ -9,7 +9,7 @@ export default function VisibilityBar () {
       {/* <Image
         src={'/icons/icon-hide-preview.svg'}
         alt='Preview Icon'
-        width={21}
+        width={25}
         height={5}
         className='flex-grow-1 p-1'
       /> */}

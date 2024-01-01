@@ -1,8 +1,15 @@
 'use client'
 
 import Image from 'next/image'
+import { useState } from 'react'
 
 export default function Header () {
+  const [showSidebar, setShowSidebar] = useState(false)
+
+  const toggleSidebar = () => {
+    setShowSidebar(!showSidebar)
+  }
+
   return (
     <header className="left-0 top-0 w-full flex justify-around bg-[#2B2D31] text-white text-sm">
       <div className='flex-grow-1 flex justify-center items-center bg-[#35393F] pb-6 pt-6 w-[3.9rem]'>
@@ -11,6 +18,7 @@ export default function Header () {
           alt='Menu Icon'
           width={18}
           height={18}
+          onClick = {() => { toggleSidebar() }}
         />
       </div>
       <nav className='flex flex-1 flex-wrap gap-2 justify-between items-center px-2'>

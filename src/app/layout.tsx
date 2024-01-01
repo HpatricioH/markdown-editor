@@ -23,7 +23,7 @@ export default async function RootLayout ({
 
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className='text-base font-normal'>
         <AuthProvider>
           {session ? <Header /> : null}
           {session ? children : <LoginPage />}

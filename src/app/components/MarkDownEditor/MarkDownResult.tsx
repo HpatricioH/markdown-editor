@@ -8,7 +8,7 @@ export default function MarkDownResult () {
 
   return (
     <ReactMarkdown
-      className='dark:bg-[#151619] dark:text-[#FFF] h-screen w-full p-2'
+      className='prose dark:bg-[#151619] dark:text-[#FFF] h-screen w-full p-2'
       rehypePlugins={[rehypeRaw]}>
         {markdownInput}
     </ReactMarkdown>

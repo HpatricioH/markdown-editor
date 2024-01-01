@@ -4,7 +4,7 @@ import Image from 'next/image'
 
 export default function Header () {
   return (
-    <header className="fixed left-0 top-0 w-full flex justify-around bg-[#2B2D31] text-white text-sm">
+    <header className="left-0 top-0 w-full flex justify-around bg-[#2B2D31] text-white text-sm">
       <div className='flex-grow-1 flex justify-center items-center bg-[#35393F] pb-6 pt-6 w-[3.9rem]'>
         <Image
           src={'/icons/icon-menu.svg'}

@@ -1,13 +1,13 @@
 'use client'
 
+import { useSideBar } from '@/app/lib/store/useSideBar'
 import Image from 'next/image'
-import { useState } from 'react'
 
 export default function Header () {
-  const [showSidebar, setShowSidebar] = useState(false)
+  const { isOpen, setIsOpen } = useSideBar()
 
   const toggleSidebar = () => {
-    setShowSidebar(!showSidebar)
+    setIsOpen(!isOpen)
   }
 
   return (

@@ -22,14 +22,14 @@ export default async function RootLayout ({
 
   return (
     <html lang="en">
-      <body className={`${robotoSlab.className} antialiased overflow-x-hidden`}>
+      <body className={`${robotoSlab.className} antialiased`}>
         <AuthProvider>
           {session
             ? (
               <>
-                <div className='flex'>
+                <div className='flex '>
                     <LayoutHolder />
-                  <div className='content w-full transform'>
+                  <div className='flex-[1]'>
                     <Header />
                     {children}
                   </div>

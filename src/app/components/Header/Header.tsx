@@ -11,14 +11,15 @@ export default function Header () {
   }
 
   return (
-    <header className="left-0 top-0 w-full flex justify-around bg-[#2B2D31] text-white text-sm">
-      <div className='flex-grow-1 flex justify-center items-center bg-[#35393F] pb-6 pt-6 w-[3.9rem]'>
+    <header className="flex justify-around bg-[#2B2D31] text-white text-sm">
+      <div
+        className='flex-grow-1 flex justify-center items-center bg-[#35393F] pb-6 pt-6 w-[3.9rem]'
+        onClick = {() => { toggleSidebar() }}>
         <Image
           src={'/icons/icon-menu.svg'}
           alt='Menu Icon'
           width={18}
           height={18}
-          onClick = {() => { toggleSidebar() }}
         />
       </div>
       <nav className='flex flex-1 flex-wrap gap-2 justify-between items-center px-2'>
@@ -48,7 +49,7 @@ export default function Header () {
               alt='Save Icon'
               width={18}
               height={18}
-              className='flex-grow-1'
+              className='flex-grow-1 transition duration-700 ease-in-out hover:scale-110 transform'
             />
           </div>
         </div>

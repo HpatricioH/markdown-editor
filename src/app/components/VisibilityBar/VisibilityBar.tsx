@@ -7,7 +7,7 @@ export default function VisibilityBar () {
   const { isPreview, setIsPreview } = useVisibilityBar()
 
   return (
-    <section className='w-full flex justify-between p-3 dark:bg-[#1D1F22] dark:text-[#C1C4CB] bg-[#F5F5F5]'>
+    <section className='w-full flex justify-between p-3 dark:bg-dark-gray-3 dark:text-light-gray-2 bg-light-gray-1/2'>
       <h4 className='uppercase font-bold text-base tracking-wider'>
         {`${isPreview ? 'Preview' : 'Markdown'}`}
       </h4>

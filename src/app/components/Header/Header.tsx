@@ -1,11 +1,30 @@
 'use client'
 
+import { useSideBar } from '@/app/lib/store/useSideBar'
 import Image from 'next/image'
 
 export default function Header () {
+  const { setIsOpen } = useSideBar()
+
+  const toggleSidebar = () => {
+    const main = document.getElementById('main')
+    const sidebar = document.getElementById('sidebar')
+    if (main?.classList.contains('open')) {
+      main.classList.remove('open')
+      sidebar?.classList.remove('openSidebar')
+      setIsOpen(false)
+    } else {
+      main?.classList.add('open')
+      sidebar?.classList.add('openSidebar')
+      setIsOpen(true)
+    }
+  }
+
   return (
-    <header className="left-0 top-0 w-full flex justify-around bg-[#2B2D31] text-white text-sm">
-      <div className='flex-grow-1 flex justify-center items-center bg-[#35393F] pb-6 pt-6 w-[3.9rem]'>
+    <header className="flex justify-around bg-dark-gray-2 text-white text-sm w-full">
+      <div
+        className='flex-grow-1 flex justify-center items-center bg-dark-gray pb-6 pt-6 w-[3.9rem]'
+        onClick = {() => { toggleSidebar() }}>
         <Image
           src={'/icons/icon-menu.svg'}
           alt='Menu Icon'
@@ -40,7 +59,7 @@ export default function Header () {
               alt='Save Icon'
               width={18}
               height={18}
-              className='flex-grow-1'
+              className='flex-grow-1 transition duration-700 ease-in-out hover:scale-110 transform'
             />
           </div>
         </div>

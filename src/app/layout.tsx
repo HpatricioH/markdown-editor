@@ -6,7 +6,6 @@ import { type NextAuthOptions, getServerSession } from 'next-auth'
 import LoginPage from '@/app/login/page'
 import { robotoSlab } from './ui/fonts'
 import LayoutHolder from './components/Layout/LayoutHolder'
-import Header from './components/Header/Header'
 
 export const metadata: Metadata = {
   title: 'Markdown',
@@ -27,13 +26,8 @@ export default async function RootLayout ({
           {session
             ? (
               <>
-                <div className='flex '>
-                    <LayoutHolder />
-                  <div className='flex-[1]'>
-                    <Header />
-                    {children}
-                  </div>
-                </div>
+                <LayoutHolder />
+                {children}
               </>
               )
             : (

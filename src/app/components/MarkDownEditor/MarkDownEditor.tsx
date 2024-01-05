@@ -10,7 +10,7 @@ export default function MarkDownEditor () {
 
   return (
     <section className="flex">
-      <div className="w-full">
+      <div className="w-full basis-full calcHeight">
         {isPreview
           ? <MarkDownResult/>
           : <MarkDownInput/>}

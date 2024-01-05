@@ -3,31 +3,108 @@
 @tailwind utilities;
 
 .prose h1 {
-  font-size: 2em !important;
-  font-weight: bold !important;
+  font-size: 32px;
+  line-height: 42px;
+  @apply text-dark-gray mb-5 font-bold dark:text-white;
 }
 
 .prose h2 {
-  font-size: 1.5em !important;
-  font-weight: bold !important;
+  font-size: 24px;
+  line-height: 31px;
+  @apply text-dark-gray mb-5 font-light dark:text-white;
 }
 
 .prose h3 {
-  font-size: 1.25em !important;
-  font-weight: bold !important;
+  font-size: 28px;
+  line-height: 37px;
+  @apply text-dark-gray mb-5 font-bold dark:text-white;
 }
 
 .prose h4 {
-  font-size: 1em !important;
-  font-weight: bold !important;
+  font-size: 20px;
+  line-height: 37px;
+  @apply text-dark-gray mb-5 font-bold dark:text-white;
 }
 
 .prose h5 {
-  font-size: 0.875em !important;
-  font-weight: bold !important;
+  font-size: 16px;
+  line-height: 21px;
+  @apply text-dark-gray mb-5 font-bold dark:text-white;
 }
 
 .prose h6 {
-  font-size: 0.85em !important;
-  font-weight: bold !important;
+  font-size: 14px;
+  line-height: 21px;
+  @apply text-orange mb-5 font-bold;
+}
+
+.prose p {
+  @apply text-sm font-normal text-light-gray-3 mb-5 dark:text-light-gray-2;
+  line-height: 24px;
+}
+
+.prose li {
+  line-height: 24px;
+}
+
+.prose ul {
+  @apply px-4 text-sm font-normal text-light-gray-3 mb-5 dark:text-light-gray-2;
+}
+
+.prose ol {
+  @apply list-decimal px-4 text-sm font-normal text-light-gray-3 mb-5 dark:text-light-gray-2;
+}
+
+.prose ul li::before {
+  content: "\2022";
+  color: #e46643;
+  font-weight: bold;
+  display: inline-block;
+  width: 1em;
+  margin-left: -1em;
+}
+
+.prose blockquote {
+  @apply p-6 bg-light-gray-1/2 dark:bg-dark-gray-2 rounded border-l-4 border-orange mb-5;
+}
+
+.prose blockquote p {
+  @apply text-sm text-dark-gray dark:text-white font-bold m-0;
+}
+
+.prose code {
+  @apply text-dark-gray dark:text-white text-xs sm:text-sm;
+}
+
+.prose pre {
+  @apply p-3 sm:p-6 bg-light-gray-1/2 rounded mb-5 dark:bg-dark-gray-2;
+}
+
+.prose pre p {
+  @apply text-dark-gray font-normal text-sm;
+}
+
+.open {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100vw;
+  transform: translateX(250px);
+  z-index: -1;
+}
+
+.openSidebar {
+  left: 0;
+}
+
+.calcHeight {
+  height: calc(100vh - 72px);
+}
+
+.calcHeight2 {
+  height: calc(100% - 51px);
+}
+
+.calcHeight3 {
+  height: calc(100vh - 225px);
 }

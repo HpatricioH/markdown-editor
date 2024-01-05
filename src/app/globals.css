@@ -98,11 +98,11 @@
 }
 
 .calcHeight {
-  height: calc(100vh - 72px);
+  height: calc(100vh - 107px);
 }
 
 .calcHeight2 {
-  height: calc(100% - 51px);
+  height: calc(100% - 0px);
 }
 
 .calcHeight3 {

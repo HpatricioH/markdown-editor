@@ -9,19 +9,15 @@ export default function Header () {
   const toggleSidebar = () => {
     const main = document.getElementById('main')
     const sidebar = document.getElementById('sidebar')
-    if (main?.classList.contains('open')) {
-      main.classList.remove('open')
-      sidebar?.classList.remove('openSidebar')
-      setIsOpen(false)
-    } else {
-      main?.classList.add('open')
-      sidebar?.classList.add('openSidebar')
-      setIsOpen(true)
-    }
+
+    const isOpen = main?.classList.toggle('open')
+    sidebar?.classList.toggle('openSidebar')
+
+    setIsOpen(isOpen ?? false)
   }
 
   return (
-    <header className="flex justify-around bg-dark-gray-2 text-white text-sm w-full">
+    <section className="flex justify-around bg-dark-gray-2 text-white text-sm w-full">
       <div
         className='flex-grow-1 flex justify-center items-center bg-dark-gray pb-6 pt-6 w-[3.9rem]'
         onClick = {() => { toggleSidebar() }}>
@@ -53,17 +49,17 @@ export default function Header () {
               className='flex-grow-1'
             />
           </div>
-          <div className='bg-[#E46643] rounded-md p-3'>
+          <div className='bg-orange hover:bg-orange-light rounded-md p-3'>
             <Image
               src={'/icons/icon-save.svg'}
               alt='Save Icon'
               width={18}
               height={18}
-              className='flex-grow-1 transition duration-700 ease-in-out hover:scale-110 transform'
+              className='flex-grow-1'
             />
           </div>
         </div>
       </nav>
-    </header>
+    </section>
   )
 }

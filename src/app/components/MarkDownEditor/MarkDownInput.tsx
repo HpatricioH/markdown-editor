@@ -11,7 +11,7 @@ export default function MarkDownInput () {
       autoFocus
       onChange={(event) => { setMarkdownInput(event.target.value) }}
       value = {markdownInput}
-      className='dark:bg-dark-gray-4 dark:text-[#FFF] focus:outline-0 h-screen w-full p-2 overflow-y-auto calcHeight2 resize-none'>
+      className='focus:outline-0 h-screen w-full p-2 overflow-y-auto calcHeight2 resize-none'>
     </textarea>
   )
 }

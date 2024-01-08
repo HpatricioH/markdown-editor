@@ -94,7 +94,7 @@
 }
 
 .openSidebar {
-  left: 0;
+  transform: translateX(0);
 }
 
 .calcHeight {
@@ -108,3 +108,4 @@
 .calcHeight3 {
   height: calc(100vh - 225px);
 }
+

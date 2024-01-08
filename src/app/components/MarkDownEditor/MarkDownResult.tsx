@@ -9,7 +9,7 @@ export default function MarkDownResult () {
 
   return (
     <ReactMarkdown
-      className={`prose dark:bg-dark-gray-4 dark:text-[#FFF] h-screen w-full p-2 overflow-auto scrollbar-hide resize-none ${robotoSlab.className} antialiased calcHeight2`}
+      className={`prose h-screen w-full p-2 overflow-auto scrollbar-hide resize-none ${robotoSlab.className} antialiased calcHeight2`}
       rehypePlugins={[rehypeRaw]}>
         {markdownInput}
     </ReactMarkdown>

@@ -6,7 +6,7 @@ import { type NextAuthOptions, getServerSession } from 'next-auth'
 import LoginPage from '@/app/login/page'
 import { roboto } from './ui/fonts'
 import LayoutHolder from './components/Layout/LayoutHolder'
-import Providers from '@/core/utils/Providers'
+import Providers from '@/core/utils/ThemeProvider'
 
 export const metadata: Metadata = {
   title: 'Markdown',
@@ -26,12 +26,10 @@ export default async function RootLayout ({
         <AuthProvider>
           {session
             ? (
-              <>
-                <Providers>
-                  <LayoutHolder />
-                  {children}
-                </Providers>
-              </>
+              <Providers>
+                <LayoutHolder />
+                {children}
+              </Providers>
               )
             : (
               <LoginPage />

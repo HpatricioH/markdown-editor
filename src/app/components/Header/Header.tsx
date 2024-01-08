@@ -4,7 +4,7 @@ import { useSideBar } from '@/app/lib/store/useSideBar'
 import Image from 'next/image'
 
 export default function Header () {
-  const { setIsOpen } = useSideBar()
+  const { isOpen, setIsOpen } = useSideBar()
 
   const toggleSidebar = () => {
     const main = document.getElementById('main')
@@ -22,7 +22,7 @@ export default function Header () {
         className='flex-grow-1 flex justify-center items-center bg-dark-gray pb-6 pt-6 w-[3.9rem]'
         onClick = {() => { toggleSidebar() }}>
         <Image
-          src={'/icons/icon-menu.svg'}
+          src={`${isOpen ? '/icons/icon-close.svg' : '/icons/icon-menu.svg'}`}
           alt='Menu Icon'
           width={18}
           height={18}

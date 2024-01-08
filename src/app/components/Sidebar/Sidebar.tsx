@@ -22,13 +22,14 @@ export default function Sidebar () {
             <Image
               src={'/icons/icon-add-document.svg'}
               alt="icon add document"
-              width={10}
-              height={10}
+              width={13}
+              height={13}
+              className='pr-1'
             />
             New Document
           </Button>
         </div>
-        <div className='flex text-light-gray-3 gap-4 items-center'>
+        <div className='flex text-light-gray-3 gap-4 items-center cursor-pointer [&_.doc-title]:hover:text-orange [&_.doc-title]:text-light-gray-1/2'>
           <Image
             src={'/icons/icon-document.svg'}
             alt="icon document"
@@ -36,9 +37,9 @@ export default function Sidebar () {
             height={4}
             className='py-3'
           />
-          <div>
+          <div >
             <p>01 April 2022</p>
-            <p className='text-light-gray-1/2'>untitled-document.md</p>
+            <p className='doc-title'>untitled-document.md</p>
           </div>
         </div>
       </section>

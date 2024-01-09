@@ -30,7 +30,7 @@ export default function Header () {
         />
       </div>
       <nav className='flex flex-1 flex-wrap gap-2 justify-between items-center px-2 *:cursor-pointer'>
-        <div className='flex gap-2'>
+        <div className='flex gap-2 hover:underline'>
           <Image
             src={'/icons/icon-document.svg'}
             alt='Document Icon'

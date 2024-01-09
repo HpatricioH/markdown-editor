@@ -1,7 +1,8 @@
 'use client'
-import { useVisibilityBar } from '@/app/lib/store/useVisibilityBar'
-import Image from 'next/image'
 import React from 'react'
+import { useVisibilityBar } from '@/app/lib/store/useVisibilityBar'
+import HidePreviewSvg from '@/core/svg/HidePreviewSvg'
+import PreviewSvg from '@/core/svg/PreviewSvg'
 
 export default function VisibilityBar () {
   const { isPreview, setIsPreview } = useVisibilityBar()
@@ -11,14 +12,15 @@ export default function VisibilityBar () {
       <h4 className='uppercase font-bold text-base tracking-wider'>
         {`${isPreview ? 'Preview' : 'Markdown'}`}
       </h4>
-      <Image
-        src={isPreview ? '/icons/icon-hide-preview.svg' : '/icons/icon-show-preview.svg'}
-        alt={isPreview ? 'Hide preview' : 'Show preview'}
-        width={25}
-        height={5}
-        className='flex-grow-1 p-1'
-        onClick={() => { setIsPreview(!isPreview) }}
-      />
+      {
+        isPreview
+          ? <HidePreviewSvg
+            className='hover:fill-orange fill-light-gray-3 self-center'
+            onClick={() => { setIsPreview(!isPreview) }}/>
+          : <PreviewSvg
+            className='hover:fill-orange fill-light-gray-3 self-center'
+            onClick={() => { setIsPreview(!isPreview) }}/>
+      }
     </section>
   )
 }

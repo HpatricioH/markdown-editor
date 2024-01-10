@@ -1,6 +1,7 @@
 import Button from '@/core/utils/Button'
 import Image from 'next/image'
 import { ThemeToggle } from './ThemeToggle'
+import AuthButtons from '../AuthButtons/AuthButtons'
 
 export default function Sidebar () {
   return (
@@ -43,7 +44,10 @@ export default function Sidebar () {
           </div>
         </div>
       </section>
-      <ThemeToggle />
+      <div>
+        <ThemeToggle />
+        <AuthButtons />
+      </div>
      </aside>
   )
 }

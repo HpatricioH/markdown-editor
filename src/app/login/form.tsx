@@ -3,11 +3,12 @@
 import { signIn, useSession } from 'next-auth/react'
 import Image from 'next/image'
 import { redirect } from 'next/navigation'
+import { SignInSkeleton } from '../ui/skeletons'
 
 export default function LoginForm () {
   const { data, status } = useSession()
 
-  if (status === 'loading') return <h1>Loading...</h1>
+  if (status === 'loading') return <SignInSkeleton />
 
   if (data) {
     redirect('/')
@@ -63,7 +64,6 @@ export default function LoginForm () {
             />
             Sign in with Google
           </button>
-
         </div>
       </div>
     </div>

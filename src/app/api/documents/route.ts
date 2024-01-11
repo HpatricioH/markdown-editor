@@ -1,5 +1,5 @@
 // http://localhost:3000/api/documents
-import prisma from '@/app/lib/db/db'
+import prisma from '../../lib/db/db'
 import { NextResponse } from 'next/server'
 
 interface Document {
@@ -20,10 +20,6 @@ export const POST = async (req: Request) => {
 
     if (!name) {
       return NextResponse.json({ message: 'Name is required' }, { status: 400 })
-    }
-
-    if (!content) {
-      return NextResponse.json({ message: 'content is required' }, { status: 400 })
     }
 
     if (!userId) {

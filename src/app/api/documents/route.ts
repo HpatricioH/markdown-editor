@@ -39,3 +39,24 @@ export const POST = async (req: Request) => {
     return NextResponse.json({ message: 'Error in Create new Document', error: (error as Error).message }, { status: 500 })
   }
 }
+
+// Update one document by id
+export const PUT = async (req: NextResponse) => {
+  const { name, content, id } = await req.json() as { name: string, content: string, id: string }
+
+  try {
+    const document = await prisma.files.update({
+      where: {
+        id
+      },
+      data: {
+        name,
+        content
+      }
+    })
+
+    return NextResponse.json(document, { status: 200 })
+  } catch (error: unknown) {
+    return NextResponse.json({ message: 'Error in Update Document', error: (error as Error).message }, { status: 500 })
+  }
+}

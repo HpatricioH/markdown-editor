@@ -5,8 +5,12 @@ import AuthButtons from '../AuthButtons/AuthButtons'
 import Documents from './Documents/Documents'
 import { Suspense } from 'react'
 import { DocumentsSkeleton } from '@/app/ui/skeletons'
+import { useSession } from 'next-auth/react'
 
 export default function Sidebar () {
+  const { data: session } = useSession()
+  const userId = session?.user?.sub as string
+
   return (
     <aside
     id="sidebar"
@@ -34,7 +38,7 @@ export default function Sidebar () {
           </Button>
         </div>
         <Suspense fallback={<DocumentsSkeleton />}>
-          <Documents />
+          <Documents userId={userId}/>
         </Suspense>
       </section>
       <div>

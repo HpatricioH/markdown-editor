@@ -2,16 +2,25 @@
 import prisma from '../../../../lib/db/db'
 import { NextResponse } from 'next/server'
 
+interface Document {
+  name?: string
+  createdAt: Date
+  content?: string
+  userId: string
+  id?: string
+}
+
 // Get all documents by user id
 export const GET = async (req: NextResponse, { params }: { params: { id: string } }) => {
   try {
     const id = params.id
 
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
     const documents = await prisma.files.findMany({
       where: {
         userId: id
       }
-    })
+    }) as Document[]
 
     return NextResponse.json(documents, { status: 200 })
   } catch (error: unknown) {

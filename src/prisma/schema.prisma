@@ -59,7 +59,7 @@ model VerificationRequest {
 
 model files {
   id        String @id @default(auto()) @map("_id") @db.ObjectId
-  createdAt DateTime @default(now())
+  createdAt String 
   name      String
   content   String
   userId    String   @db.ObjectId

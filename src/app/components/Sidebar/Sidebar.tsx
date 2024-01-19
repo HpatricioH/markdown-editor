@@ -8,7 +8,7 @@ import { DocumentsSkeleton } from '@/app/ui/skeletons'
 import { useSession } from 'next-auth/react'
 
 export default function Sidebar () {
-  const { data: session } = useSession()
+  const { data: session, status } = useSession()
   const userId = session?.user?.sub as string
 
   return (
@@ -37,9 +37,13 @@ export default function Sidebar () {
             New Document
           </Button>
         </div>
-        <Suspense fallback={<DocumentsSkeleton />}>
-          <Documents userId={userId}/>
-        </Suspense>
+        {
+          status !== 'unauthenticated' && (
+            <Suspense fallback={<DocumentsSkeleton />}>
+              <Documents userId={userId}/>
+            </Suspense>
+          )
+        }
       </section>
       <div>
         <ThemeToggle />

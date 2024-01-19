@@ -1,11 +1,14 @@
 'use client'
 
 import { useSideBar } from '@/app/lib/store/useSideBar'
+import { useParams } from 'next/navigation'
 import DeleteSvg from '@/core/svg/DeleteSvg'
 import Image from 'next/image'
+import HeaderForm from './HeaderForm'
 
 export default function Header () {
   const { isOpen, setIsOpen } = useSideBar()
+  const { id } = useParams()
 
   const toggleSidebar = () => {
     const main = document.getElementById('main')
@@ -23,23 +26,14 @@ export default function Header () {
         className='flex-grow-1 flex justify-center items-center bg-dark-gray pb-6 pt-6 w-[3.9rem] hover:bg-orange cursor-pointer'
         onClick = {() => { toggleSidebar() }}>
         <Image
-          src={`${isOpen ? '/icons/icon-close.svg' : '/icons/icon-menu.svg'}`}
+          src={isOpen ? '/icons/icon-close.svg' : '/icons/icon-menu.svg'}
           alt='Menu Icon'
           width={18}
           height={18}
         />
       </div>
       <nav className='flex flex-1 flex-wrap gap-2 justify-between items-center px-2 *:cursor-pointer'>
-        <div className='flex gap-2 hover:underline'>
-          <Image
-            src={'/icons/icon-document.svg'}
-            alt='Document Icon'
-            width={18}
-            height={18}
-            className='flex-grow-1'
-          />
-          <p className='lowercase'>Welcome.md</p>
-        </div>
+        <HeaderForm id={id}/>
         <div className='flex'>
           <div className='p-3'>
             <DeleteSvg className='flex-grow-1 hover:fill-orange fill-light-gray-3'/>

@@ -9,11 +9,12 @@ export default function MarkDownEditor () {
   const { isPreview } = useVisibilityBar()
 
   return (
-    <section className="flex">
-      <div className="w-full basis-full calcHeight *:dark:bg-dark-gray-4 *:dark:text-[#FFF] *:bg-light-gray-1/2 *:text-dark-gray-4">
-        {isPreview
-          ? <MarkDownResult/>
-          : <MarkDownInput/>}
+    <section >
+      <div className="w-full flex calcHeight *:dark:bg-dark-gray-4 *:dark:text-[#FFF] *:bg-light-gray-1/2 *:text-dark-gray-4`">
+      {
+        !isPreview && <MarkDownInput/>
+      }
+        <MarkDownResult/>
       </div>
     </section>
   )

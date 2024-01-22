@@ -7,7 +7,6 @@ export default async function Documents ({ userId }: { userId: string }) {
 
   return (
     <div className='flex flex-col w-full gap-4 '>
-
       <DocumentsClientSide documents={documents} />
     </div>
   )

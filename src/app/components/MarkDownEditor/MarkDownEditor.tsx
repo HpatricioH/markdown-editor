@@ -1,21 +1,21 @@
-'use client'
-
 import 'easymde/dist/easymde.min.css'
-import { useVisibilityBar } from '@/app/lib/store/useVisibilityBar'
-import MarkDownResult from './MarkDownResult'
-import MarkDownInput from './MarkDownInput'
+import MarkdownEditorContainer from './MarkdownEditorContainer'
+import { fetchADocument } from '@/app/lib/data/data'
 
-export default function MarkDownEditor () {
-  const { isPreview } = useVisibilityBar()
+interface MarkDownEditorProps {
+  id?: string | string[] | undefined
+}
+
+export default async function MarkDownEditor ({ id }: MarkDownEditorProps) {
+  let document = null
+
+  if (id) {
+    document = await fetchADocument({ documentId: id as string })
+  }
 
   return (
     <section >
-      <div className="w-full flex calcHeight *:dark:bg-dark-gray-4 *:dark:text-[#FFF] *:bg-light-gray-1/2 *:text-dark-gray-4`">
-      {
-        !isPreview && <MarkDownInput/>
-      }
-        <MarkDownResult/>
-      </div>
+      <MarkdownEditorContainer document={document}/>
     </section>
   )
 }

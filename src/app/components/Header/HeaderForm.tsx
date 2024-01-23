@@ -3,8 +3,13 @@ import Image from 'next/image'
 import React from 'react'
 
 export default async function HeaderForm ({ id }: { id?: string | string[] | undefined }) {
-  const document = await fetchADocument({ documentId: id as string })
-  const { name } = document
+  let document = null
+
+  if (id) {
+    document = await fetchADocument({ documentId: id as string })
+  }
+
+  const { name } = document ?? {}
 
   return (
     <form className='flex gap-2 w-[30%]' >

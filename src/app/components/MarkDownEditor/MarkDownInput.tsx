@@ -5,8 +5,8 @@ import React from 'react'
 import VisibilityBar from '../VisibilityBar/VisibilityBar'
 import { useVisibilityBar } from '@/app/lib/store/useVisibilityBar'
 
-export default function MarkDownInput () {
-  const { markdownInput, setMarkdownInput } = useEditorInput()
+export default function MarkDownInput ({ content }: { content: string | undefined }) {
+  const { setMarkdownInput } = useEditorInput()
   const { isPreview } = useVisibilityBar()
 
   return (
@@ -16,7 +16,7 @@ export default function MarkDownInput () {
       <textarea
         autoFocus
         onChange={(event) => { setMarkdownInput(event.target.value) }}
-        value = {markdownInput}
+        defaultValue={content}
         className='focus:outline-0 h-screen w-full p-2 overflow-y-auto calcHeight2 resize-none'>
       </textarea>
     </div>

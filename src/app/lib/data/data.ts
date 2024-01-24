@@ -28,3 +28,18 @@ export async function fetchADocument ({ documentId }: { documentId: string }) {
     throw new Error((error as Error).message)
   }
 }
+
+export async function createDocument ({ name, content, userId, createdAt }: DocumentProps) {
+  try {
+    const URL = `${NEXT_PUBLIC_URL}/api/documents`
+
+    const response = await fetch(URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, content, userId, createdAt })
+    })
+    return await response.json() as DocumentProps
+  } catch (error: unknown) {
+    throw new Error((error as Error).message)
+  }
+}

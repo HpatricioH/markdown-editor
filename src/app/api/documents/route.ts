@@ -6,6 +6,7 @@ interface Document {
   name: string
   content: string
   userId: string
+  createdAt: string
 }
 
 // Create a new document
@@ -15,7 +16,8 @@ export const POST = async (req: Request) => {
     const {
       name,
       content,
-      userId
+      userId,
+      createdAt
     } = body
 
     if (!name) {
@@ -30,7 +32,7 @@ export const POST = async (req: Request) => {
       data: {
         name,
         content,
-        createdAt: new Date(),
+        createdAt,
         userId
       }
     })

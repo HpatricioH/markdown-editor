@@ -26,7 +26,7 @@ export default function Sidebar () {
           My Documents
         </p>
         <div>
-          <Button >
+          <Button className='w-full py-2 px-4'>
             <Image
               src={'/icons/icon-add-document.svg'}
               alt="icon add document"

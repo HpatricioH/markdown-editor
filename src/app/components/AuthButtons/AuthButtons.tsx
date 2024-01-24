@@ -11,7 +11,7 @@ export default function AuthButtons () {
   return (
     <>
     {data
-      ? <Button onClick={() => { signOut() }} >
+      ? <Button className='w-full py-2 px-4' onClick={() => { signOut() }} >
         Sign Out
       </Button>
       : <Link

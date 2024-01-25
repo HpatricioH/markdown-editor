@@ -3,7 +3,11 @@ import React from 'react'
 import DocumentsClientSide from './DocumentsClientSide'
 
 export default async function Documents ({ userId }: { userId: string }) {
-  const documents = await fetchDocuments({ userId })
+  let documents = null
+
+  if (userId) {
+    documents = await fetchDocuments({ userId })
+  }
 
   return (
     <div className='flex flex-col w-full gap-4 '>

@@ -1,20 +1,18 @@
-import { createDocument, fetchADocument } from '@/app/lib/data/data'
+import { createDocument } from '@/app/lib/data/data'
 import DeleteSvg from '@/core/svg/DeleteSvg'
 import Button from '@/core/utils/Button'
 import Date from '@/core/utils/date'
 import Image from 'next/image'
 import React, { type FormEvent } from 'react'
 
-export default async function HeaderForm ({ id, markdownInput, userId }:
-{ id?: string | string[] | undefined, markdownInput: string, userId: string }) {
-  let document = null
+interface HeaderFormProps {
+  id?: string | string[] | undefined
+  markdownInput: string
+  userId: string
+  documentName: string | undefined
+}
 
-  if (id) {
-    document = await fetchADocument({ documentId: id as string })
-  }
-
-  const { name } = document ?? {}
-
+export default function HeaderForm ({ id, markdownInput, userId, documentName }: HeaderFormProps) {
   async function onSubmit (event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
     const currentDate = Date()
@@ -37,7 +35,7 @@ export default async function HeaderForm ({ id, markdownInput, userId }:
         />
         <input
           className='lowercase bg-dark-gray-2 cursor-pointer hover:border-b-2 caret-orange w-[30%] focus:outline-none'
-          defaultValue={name}
+          defaultValue={documentName}
           type='text'
           name='name'
         />

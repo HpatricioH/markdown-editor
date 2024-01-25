@@ -13,7 +13,7 @@ export default function Page () {
     <>
       <LayoutHolder />
       <main id='main' className="flex flex-col items-center justify-between transition-transform overflow-y-hidden duration-500">
-      <Header />
+      <Header id={id}/>
         <div className="z-10 w-full items-center justify-between">
           <MarkDownEditor id={id}/>
         </div>

@@ -1,20 +1,21 @@
 'use client'
 
 import { useSideBar } from '@/app/lib/store/useSideBar'
-import { useParams } from 'next/navigation'
 import DeleteSvg from '@/core/svg/DeleteSvg'
 import Image from 'next/image'
 import HeaderForm from './HeaderForm'
 import { Suspense } from 'react'
 import { useSession } from 'next-auth/react'
 import { useEditorInput } from '@/app/lib/store/useEditorInput'
+import { useSelectedDocument } from '@/app/lib/hook/useSelectedDocument'
 
-export default function Header () {
+export default function Header ({ id }: { id?: string | string[] | undefined }) {
   const { data, status } = useSession()
   const { isOpen, setIsOpen } = useSideBar()
   const { markdownInput } = useEditorInput()
-  const { id } = useParams()
   const userId = data?.user?.sub as string
+  const { documentSelected } = useSelectedDocument({ id: id as string })
+  const documentName = (documentSelected as { name: string }).name
 
   const toggleSidebar = () => {
     const main = document.getElementById('main')
@@ -42,7 +43,11 @@ export default function Header () {
         {
           status !== 'unauthenticated'
             ? <Suspense fallback={<div>loading...</div>}>
-              <HeaderForm id={id} markdownInput={markdownInput} userId={userId}/>
+              <HeaderForm
+                id={id}
+                markdownInput={markdownInput}
+                userId={userId}
+                documentName={documentName}/>
             </Suspense>
             : <>
               <div className='flex gap-2 w-[30%]' >

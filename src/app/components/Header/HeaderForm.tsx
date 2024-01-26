@@ -1,4 +1,4 @@
-import { createDocument } from '@/app/lib/data/data'
+import { createDocument, updateDocument } from '@/app/lib/data/data'
 import DeleteSvg from '@/core/svg/DeleteSvg'
 import Button from '@/core/utils/Button'
 import Date from '@/core/utils/date'
@@ -18,7 +18,13 @@ export default function HeaderForm ({ id, markdownInput, userId, documentName }:
     const currentDate = Date()
     const formData = new FormData(event.currentTarget)
     const name = formData.get('name') as string
-    await createDocument({ name, content: markdownInput, userId, createdAt: currentDate })
+
+    if (id) {
+      const updateResponse = await updateDocument({ id, name, content: markdownInput })
+      console.log(updateResponse)
+    } else {
+      await createDocument({ name, content: markdownInput, userId, createdAt: currentDate })
+    }
   }
 
   return (

@@ -1,3 +1,5 @@
+'use client'
+
 import Button from '@/core/utils/Button'
 import Image from 'next/image'
 import { ThemeToggle } from './ThemeToggle'

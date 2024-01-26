@@ -8,11 +8,13 @@ import { Suspense } from 'react'
 import { useSession } from 'next-auth/react'
 import { useEditorInput } from '@/app/lib/store/useEditorInput'
 import { useSelectedDocument } from '@/app/lib/hook/useSelectedDocument'
+import { useParams } from 'next/navigation'
 
-export default function Header ({ id }: { id?: string | string[] | undefined }) {
+export default function Header () {
   const { data, status } = useSession()
   const { isOpen, setIsOpen } = useSideBar()
   const { markdownInput } = useEditorInput()
+  const { id } = useParams()
   const userId = data?.user?.sub as string
   const { documentSelected } = useSelectedDocument({ id: id as string })
   const documentName = (documentSelected as { name: string }).name
@@ -42,13 +44,11 @@ export default function Header ({ id }: { id?: string | string[] | undefined }) 
       <nav className='flex flex-1 flex-wrap gap-2 justify-between items-center px-2 *:cursor-pointer w-full'>
         {
           status !== 'unauthenticated'
-            ? <Suspense fallback={<div>loading...</div>}>
-              <HeaderForm
+            ? <HeaderForm
                 id={id}
                 markdownInput={markdownInput}
                 userId={userId}
                 documentName={documentName}/>
-            </Suspense>
             : <>
               <div className='flex gap-2 w-[30%]' >
                 <Image

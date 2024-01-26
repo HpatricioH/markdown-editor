@@ -1,14 +1,15 @@
-'use client'
-
 import React from 'react'
 import MarkDownInput from './MarkDownInput'
 import MarkDownResult from './MarkDownResult'
-import { useVisibilityBar } from '@/app/lib/store/useVisibilityBar'
-import { type DocumentProps } from '@/app/lib/data/data'
+import { fetchADocument } from '@/app/lib/data/data'
 
-export default function MarkdownEditorContainer ({ document }: { document: DocumentProps | null }) {
-  const { isPreview } = useVisibilityBar()
-  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+export default async function MarkdownEditorContainer ({ isPreview, id }: { isPreview: boolean, id: string | string[] | undefined }) {
+  let document = null
+
+  if (id) {
+    document = await fetchADocument({ documentId: id as string })
+  }
+
   const content = document?.content ?? ''
 
   return (
@@ -16,7 +17,7 @@ export default function MarkdownEditorContainer ({ document }: { document: Docum
       {
         !isPreview && <MarkDownInput content={content}/>
       }
-        <MarkDownResult/>
+        <MarkDownResult content={content}/>
     </div>
   )
 }

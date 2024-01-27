@@ -1,3 +1,5 @@
+'use client'
+
 import { useTheme } from 'next-themes'
 import Moon from '@/core/svg/Moon'
 import Sun from '@/core/svg/Sun'

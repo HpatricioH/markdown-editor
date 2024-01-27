@@ -1,3 +1,5 @@
+'use client'
+
 import React from 'react'
 import { useEditorInput } from '@/app/lib/store/useEditorInput'
 import ReactMarkdown from 'react-markdown'
@@ -6,7 +8,7 @@ import { robotoSlab } from '@/app/ui/fonts'
 import VisibilityBar from '../VisibilityBar/VisibilityBar'
 import { useVisibilityBar } from '@/app/lib/store/useVisibilityBar'
 
-export default function MarkDownResult () {
+export default function MarkDownResult ({ content }: { content: string }) {
   const { markdownInput } = useEditorInput()
   const { isPreview } = useVisibilityBar()
 
@@ -16,7 +18,9 @@ export default function MarkDownResult () {
       <ReactMarkdown
         className={`prose h-screen w-full p-2 overflow-auto scrollbar-hide resize-none ${robotoSlab.className} antialiased calcHeight2`}
         rehypePlugins={[rehypeRaw]}>
-          {markdownInput}
+
+          {markdownInput || content}
+
       </ReactMarkdown>
     </div>
   )

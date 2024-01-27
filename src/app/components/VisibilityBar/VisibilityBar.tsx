@@ -1,4 +1,5 @@
 'use client'
+
 import React from 'react'
 import { useVisibilityBar } from '@/app/lib/store/useVisibilityBar'
 import HidePreviewSvg from '@/core/svg/HidePreviewSvg'

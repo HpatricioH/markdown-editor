@@ -1,3 +1,5 @@
+'use client'
+
 import Button from '@/core/utils/Button'
 import Image from 'next/image'
 import { ThemeToggle } from './ThemeToggle'
@@ -26,7 +28,7 @@ export default function Sidebar () {
           My Documents
         </p>
         <div>
-          <Button >
+          <Button className='w-full py-2 px-4'>
             <Image
               src={'/icons/icon-add-document.svg'}
               alt="icon add document"
@@ -39,7 +41,12 @@ export default function Sidebar () {
         </div>
         {
           status !== 'unauthenticated' && (
-            <Suspense fallback={<DocumentsSkeleton />}>
+            <Suspense fallback={
+              <>
+                <DocumentsSkeleton />
+                <DocumentsSkeleton />
+              </>
+              }>
               <Documents userId={userId}/>
             </Suspense>
           )

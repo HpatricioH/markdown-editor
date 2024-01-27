@@ -1,14 +1,16 @@
+'use client'
+
 import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { type DocumentProps } from '@/app/lib/data/data'
 import { useSideBar } from '@/app/lib/store/useSideBar'
 
-export default function DocumentsClientSide ({ documents }: { documents: DocumentProps[] }) {
+export default function DocumentsClientSide ({ documents }: { documents: DocumentProps[] | null }) {
   const { setIsOpen } = useSideBar()
 
   return (
-    documents.map((document) => (
+    documents?.map((document) => (
       <Link
         className='flex gap-4 items-baseline cursor-pointer [&_.doc-title]:hover:text-orange [&_.doc-title]:text-light-gray-1/2 text-light-gray-3'
         key={document.id}

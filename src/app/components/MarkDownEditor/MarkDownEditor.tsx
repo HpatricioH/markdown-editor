@@ -1,21 +1,23 @@
+'use client'
+
 import 'easymde/dist/easymde.min.css'
 import MarkdownEditorContainer from './MarkdownEditorContainer'
-import { fetchADocument } from '@/app/lib/data/data'
+import { useParams } from 'next/navigation'
+import { useVisibilityBar } from '@/app/lib/store/useVisibilityBar'
+import { Suspense } from 'react'
+import { MarkdownSkeleton } from '@/app/ui/skeletons'
 
-interface MarkDownEditorProps {
-  id?: string | string[] | undefined
-}
-
-export default async function MarkDownEditor ({ id }: MarkDownEditorProps) {
-  let document = null
-
-  if (id) {
-    document = await fetchADocument({ documentId: id as string })
-  }
+export default function MarkDownEditor () {
+  const { id } = useParams()
+  const { isPreview } = useVisibilityBar()
 
   return (
     <section >
-      <MarkdownEditorContainer document={document}/>
+      <Suspense fallback={<MarkdownSkeleton/>}>
+          <MarkdownEditorContainer
+            isPreview={isPreview}
+            id={id}/>
+      </Suspense>
     </section>
   )
 }

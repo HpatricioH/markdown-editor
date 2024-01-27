@@ -4,7 +4,7 @@ export interface DocumentProps {
   createdAt?: string
   content?: string
   userId?: string
-  id?: string | string[]
+  id?: string | string[] | undefined
 }
 
 // get all documents from a user
@@ -59,6 +59,22 @@ export async function updateDocument ({ name, content, id }: DocumentProps) {
     })
     if (response.status === 200) {
       return { message: 'Document updated successfully' }
+    }
+  } catch (error: unknown) {
+    throw new Error((error as Error).message)
+  }
+}
+
+// delete a document
+export async function deleteDocument ({ id }: DocumentProps) {
+  try {
+    const URL = `${NEXT_PUBLIC_URL}/api/documents/${id?.toString()}`
+
+    const response = await fetch(URL, {
+      method: 'DELETE'
+    })
+    if (response.status === 200) {
+      return { message: 'Document deleted successfully' }
     }
   } catch (error: unknown) {
     throw new Error((error as Error).message)

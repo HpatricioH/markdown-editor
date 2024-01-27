@@ -1,4 +1,4 @@
-import { createDocument, updateDocument } from '@/app/lib/data/data'
+import { createDocument, deleteDocument, updateDocument } from '@/app/lib/data/data'
 import DeleteSvg from '@/core/svg/DeleteSvg'
 import Button from '@/core/utils/Button'
 import Date from '@/core/utils/date'
@@ -27,6 +27,11 @@ export default function HeaderForm ({ id, markdownInput, userId, documentName }:
     }
   }
 
+  async function deleteDocuments () {
+    const response = await deleteDocument({ id })
+    console.log(response)
+  }
+
   return (
     <form
       className='flex gap-2 w-full justify-between'
@@ -47,7 +52,9 @@ export default function HeaderForm ({ id, markdownInput, userId, documentName }:
         />
       </div>
       <div className='flex gap-2 items-center'>
-        <DeleteSvg className='flex-grow-1 hover:fill-orange fill-light-gray-3' />
+        <button onClick={() => { deleteDocuments() }}>
+          <DeleteSvg className='flex-grow-1 hover:fill-orange fill-light-gray-3' />
+        </button>
         <Button
           className='py-3 px-3'
           type='submit'

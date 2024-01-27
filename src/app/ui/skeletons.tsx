@@ -3,7 +3,7 @@ const shimmer =
 
 export function SignInSkeleton () {
   return (
-    <div className={`${shimmer} relative overflow-hidden rounded-xl shadow-sm md:w-full md:max-w-lg bg-gray-100`}>
+    <div className={`${shimmer} relative overflow-hidden rounded-xl shadow-sm md:w-full md:max-w-lg bg-gray-100 opacity-55`}>
       <div className="space-y-4 p-6">
         <div className="space-y-2">
           <input className="flex h-10 w-full rounded-md px-3 py-2 text-black bg-gray-200"/>
@@ -30,7 +30,7 @@ export function SignInSkeleton () {
 export function DocumentsSkeleton () {
   return (
     <div
-      className={`${shimmer} relative overflow-hidden rounded-xl p-2 shadow-sm`}
+      className={`${shimmer} relative overflow-hidden rounded-xl p-2 shadow-sm opacity-55 mb-2`}
     >
       <div className="flex gap-2 items-center ">
         <div className="h-[4px] w-[15px] p-2 mt-4 self-center rounded-md bg-gray-200" />
@@ -39,6 +39,15 @@ export function DocumentsSkeleton () {
           <div className="w-[9rem] p-[0.40rem] rounded-md bg-gray-200" />
         </div>
       </div>
+    </div>
+  )
+}
+
+export function MarkdownSkeleton () {
+  return (
+    <div className={`${shimmer} relative overflow-hidden p-2 shadow-sm first-letter:w-full flex calcHeight *:dark:bg-dark-gray-4 opacity-5`}>
+      <div ></div>
+      <div></div>
     </div>
   )
 }

@@ -41,7 +41,12 @@ export default function Sidebar () {
         </div>
         {
           status !== 'unauthenticated' && (
-            <Suspense fallback={<DocumentsSkeleton />}>
+            <Suspense fallback={
+              <>
+                <DocumentsSkeleton />
+                <DocumentsSkeleton />
+              </>
+              }>
               <Documents userId={userId}/>
             </Suspense>
           )

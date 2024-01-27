@@ -12,9 +12,6 @@ export default function MarkDownResult ({ content }: { content: string }) {
   const { markdownInput } = useEditorInput()
   const { isPreview } = useVisibilityBar()
 
-  console.log('markdownInput:', markdownInput)
-  console.log('content:', content)
-
   return (
     <div className={`flex flex-col ${isPreview ? 'w-full' : 'w-[50%]'} ${!isPreview ? 'hidden' : 'block'} sm:block`}>
       <VisibilityBar title={'Preview'}/>

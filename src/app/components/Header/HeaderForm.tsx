@@ -1,4 +1,4 @@
-import { createDocument, deleteDocument, updateDocument } from '@/app/lib/data/data'
+import { createDocument, updateDocument } from '@/app/lib/data/data'
 import DeleteSvg from '@/core/svg/DeleteSvg'
 import Button from '@/core/utils/Button'
 import Date from '@/core/utils/date'
@@ -10,9 +10,10 @@ interface HeaderFormProps {
   markdownInput: string
   userId: string
   documentName: string | undefined
+  setDeleteDocModal: (value: boolean) => void
 }
 
-export default function HeaderForm ({ id, markdownInput, userId, documentName }: HeaderFormProps) {
+export default function HeaderForm ({ id, markdownInput, userId, documentName, setDeleteDocModal }: HeaderFormProps) {
   async function onSubmit (event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
     const currentDate = Date()
@@ -27,9 +28,8 @@ export default function HeaderForm ({ id, markdownInput, userId, documentName }:
     }
   }
 
-  async function deleteDocuments () {
-    const response = await deleteDocument({ id })
-    console.log(response)
+  const deleteModalHandler = () => {
+    setDeleteDocModal(true)
   }
 
   return (
@@ -52,9 +52,9 @@ export default function HeaderForm ({ id, markdownInput, userId, documentName }:
         />
       </div>
       <div className='flex gap-2 items-center'>
-        <button onClick={() => { deleteDocuments() }}>
+        <div onClick={() => { deleteModalHandler() }}>
           <DeleteSvg className='flex-grow-1 hover:fill-orange fill-light-gray-3' />
-        </button>
+        </div>
         <Button
           className='py-3 px-3'
           type='submit'

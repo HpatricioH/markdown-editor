@@ -8,11 +8,14 @@ import { useSession } from 'next-auth/react'
 import { useEditorInput } from '@/app/lib/store/useEditorInput'
 import { useSelectedDocument } from '@/app/lib/hook/useSelectedDocument'
 import { useParams } from 'next/navigation'
+import { useState } from 'react'
+import DeleteModal from '../Modals/DeleteModal'
 
 export default function Header () {
   const { data, status } = useSession()
   const { isOpen, setIsOpen } = useSideBar()
   const { markdownInput } = useEditorInput()
+  const [deleteDocModal, setDeleteDocModal] = useState(false)
   const { id } = useParams()
   const userId = data?.user?.sub as string
   const { documentSelected } = useSelectedDocument({ id: id as string })
@@ -47,7 +50,8 @@ export default function Header () {
                 id={id}
                 markdownInput={markdownInput}
                 userId={userId}
-                documentName={documentName}/>
+                documentName={documentName}
+                setDeleteDocModal={setDeleteDocModal}/>
             : <>
               <div className='flex gap-2 w-[30%]' >
                 <Image
@@ -79,6 +83,13 @@ export default function Header () {
             </>
         }
       </nav>
+      {deleteDocModal &&
+        <DeleteModal
+          setDeleteDocModal={setDeleteDocModal}
+          documentName={documentName}
+          // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+          id={id?.toString()} />
+      }
     </section>
   )
 }

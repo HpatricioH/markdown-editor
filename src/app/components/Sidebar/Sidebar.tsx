@@ -8,10 +8,19 @@ import Documents from './Documents/Documents'
 import { Suspense } from 'react'
 import { DocumentsSkeleton } from '@/app/ui/skeletons'
 import { useSession } from 'next-auth/react'
+import { useRouter } from 'next/navigation'
+import { useSideBar } from '@/app/lib/store/useSideBar'
 
 export default function Sidebar () {
   const { data: session, status } = useSession()
+  const { setIsOpen } = useSideBar()
+  const router = useRouter()
   const userId = session?.user?.sub as string
+
+  const handleNewDocument = () => {
+    router.push('/')
+    setIsOpen(false)
+  }
 
   return (
     <aside
@@ -28,7 +37,7 @@ export default function Sidebar () {
           My Documents
         </p>
         <div>
-          <Button className='w-full py-2 px-4'>
+          <Button className='w-full py-2 px-4' onClick={() => { handleNewDocument() }}>
             <Image
               src={'/icons/icon-add-document.svg'}
               alt="icon add document"

@@ -35,7 +35,7 @@ export default function DeleteModal ({ setDeleteDocModal, id, documentName }: De
       <h1 className='normal-case text-dark-gray dark:text-[#FFF] font-bold text-xl tracking-[0.07rem] leading-[0.938rem]'>
         Delete this document?
       </h1>
-      <p className='text-light-gray-3 dark:text-light-gray-2 font-normal text-[1.01rem] tracking-[0.05rem] leading-[1.8rem] line-clamp-3'>
+      <p className='text-light-gray-3 dark:text-light-gray-2 font-normal text-[1.01rem] tracking-[0.05rem] leading-[1.5rem]'>
         Are you sure you want to delete <span>&apos;{documentName ?? 'undefined.md'}&apos;</span> document and its contents? This action cannot be revered.
       </p>
       <Button className={`${roboto.className} h-[3rem] text-base`} onClick={() => { deleteDocuments() }}>

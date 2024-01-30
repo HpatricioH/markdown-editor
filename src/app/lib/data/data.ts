@@ -36,6 +36,8 @@ export async function createDocument ({ name, content, userId, createdAt }: Docu
   try {
     const URL = `${NEXT_PUBLIC_URL}/api/documents`
 
+    name = name ?? 'Untitled Document'
+
     const response = await fetch(URL, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },

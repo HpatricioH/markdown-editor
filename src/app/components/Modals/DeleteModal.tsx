@@ -22,9 +22,8 @@ export default function DeleteModal ({ setDeleteDocModal, id, documentName }: De
 
   async function deleteDocuments () {
     if (id) {
-      const response = await deleteDocument({ id })
+      await deleteDocument({ id })
       router.push('/')
-      console.log(response)
     }
   }
 

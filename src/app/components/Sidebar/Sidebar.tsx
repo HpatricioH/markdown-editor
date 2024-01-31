@@ -19,7 +19,13 @@ export default function Sidebar () {
 
   const handleNewDocument = () => {
     router.push('/')
-    setIsOpen(false)
+    const main = document.getElementById('main')
+    const sidebar = document.getElementById('sidebar')
+
+    const isOpen = main?.classList.toggle('open')
+    sidebar?.classList.toggle('openSidebar')
+
+    setIsOpen(isOpen ?? false)
   }
 
   return (

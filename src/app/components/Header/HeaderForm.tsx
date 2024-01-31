@@ -22,6 +22,7 @@ export default function HeaderForm ({ id, markdownInput, userId, documentName, s
 
     if (id) {
       const updateResponse = await updateDocument({ id, name, content: markdownInput })
+      // TODO change this to show modal for confirmation of update.
       console.log(updateResponse)
     } else {
       await createDocument({ name, content: markdownInput, userId, createdAt: currentDate })

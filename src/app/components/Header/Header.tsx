@@ -1,7 +1,6 @@
 'use client'
 
 import { useSideBar } from '@/app/lib/store/useSideBar'
-import DeleteSvg from '@/core/svg/DeleteSvg'
 import Image from 'next/image'
 import HeaderForm from './HeaderForm'
 import { useSession } from 'next-auth/react'
@@ -10,12 +9,15 @@ import { useSelectedDocument } from '@/app/lib/hook/useSelectedDocument'
 import { useParams } from 'next/navigation'
 import { useState } from 'react'
 import DeleteModal from '../Modals/DeleteModal'
+import HeaderUnauthenticated from '../HeaderUnauthenticated/HeaderUnauthenticated'
+import AlertModal from '../Modals/AlertModal'
 
 export default function Header () {
   const { data, status } = useSession()
   const { isOpen, setIsOpen } = useSideBar()
   const { markdownInput } = useEditorInput()
   const [deleteDocModal, setDeleteDocModal] = useState(false)
+  const [alertModal, setAlertModal] = useState(false)
   const { id } = useParams()
   const userId = data?.user?.sub as string
   const { documentSelected } = useSelectedDocument({ id: id as string })
@@ -52,35 +54,8 @@ export default function Header () {
                 userId={userId}
                 documentName={documentName}
                 setDeleteDocModal={setDeleteDocModal}/>
-            : <>
-              <div className='flex gap-2 w-[30%]' >
-                <Image
-                  src={'/icons/icon-document.svg'}
-                  alt='Document Icon'
-                  width={18}
-                  height={18}
-                  className='flex-grow-1'
-                />
-                <input
-                  className='lowercase outline outline-0 focus:outline-0 bg-dark-gray-2 cursor-pointer hover:border-b-2 caret-orange w-full'
-                  defaultValue='Untitled'
-                  />
-              </div>
-              <div className='flex'>
-              <div className='p-3'>
-                <DeleteSvg className='flex-grow-1 hover:fill-orange fill-light-gray-3'/>
-              </div>
-              <div className='bg-orange hover:bg-orange-light rounded-md p-3'>
-                <Image
-                  src={'/icons/icon-save.svg'}
-                  alt='Save Icon'
-                  width={18}
-                  height={18}
-                  className='flex-grow-1'
-                />
-              </div>
-            </div>
-            </>
+            : <HeaderUnauthenticated
+                setAlertModal={setAlertModal}/>
         }
       </nav>
       {deleteDocModal &&
@@ -89,6 +64,11 @@ export default function Header () {
           documentName={documentName}
           // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
           id={id?.toString()} />
+      }
+      {
+        alertModal &&
+        <AlertModal
+          setAlertModal={setAlertModal} />
       }
     </section>
   )

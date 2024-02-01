@@ -11,16 +11,19 @@ interface HeaderFormProps {
   userId: string
   documentName: string | undefined
   setDeleteDocModal: (value: boolean) => void
+  setUserDeleteModal: (value: boolean) => void
 }
 
-export default function HeaderForm ({ id, markdownInput, userId, documentName, setDeleteDocModal }: HeaderFormProps) {
+export default function HeaderForm ({ ...props }: HeaderFormProps) {
+  const { id, markdownInput, userId, documentName, setDeleteDocModal, setUserDeleteModal } = props
+
   async function onSubmit (event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
     const currentDate = Date()
     const formData = new FormData(event.currentTarget)
     const name = formData.get('name') as string
 
-    if (id) {
+    if (id !== undefined) {
       const updateResponse = await updateDocument({ id, name, content: markdownInput })
       // TODO change this to show modal for confirmation of update.
       console.log(updateResponse)
@@ -30,7 +33,8 @@ export default function HeaderForm ({ id, markdownInput, userId, documentName, s
   }
 
   const deleteModalHandler = () => {
-    setDeleteDocModal(true)
+    id === undefined ? setUserDeleteModal(true) : setDeleteDocModal(true)
+    console.log(id)
   }
 
   return (
@@ -53,7 +57,10 @@ export default function HeaderForm ({ id, markdownInput, userId, documentName, s
         />
       </div>
       <div className='flex gap-2 items-center'>
-        <div onClick={() => { deleteModalHandler() }}>
+        <div
+          id='user-delete-button'
+          onClick={() => { deleteModalHandler() }}
+          >
           <DeleteSvg className='flex-grow-1 hover:fill-orange fill-light-gray-3' />
         </div>
         <Button

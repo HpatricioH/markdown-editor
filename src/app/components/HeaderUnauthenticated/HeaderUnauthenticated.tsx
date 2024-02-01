@@ -24,7 +24,10 @@ export default function HeaderUnauthenticated (
         />
       </div>
       <div className='flex'>
-        <div className='p-3' onClick={() => { handleClick() }}>
+        <div
+          id="unauthorize-delete-button"
+          className='p-3'
+          onClick={() => { handleClick() }}>
           <DeleteSvg className='flex-grow-1 hover:fill-orange fill-light-gray-3' />
         </div>
         <div className='bg-orange hover:bg-orange-light rounded-md p-3' onClick={() => { handleClick() }}>

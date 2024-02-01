@@ -11,6 +11,7 @@ import { useState } from 'react'
 import DeleteModal from '../Modals/DeleteModal'
 import HeaderUnauthenticated from '../HeaderUnauthenticated/HeaderUnauthenticated'
 import AlertModal from '../Modals/AlertModal'
+import UserDeleteModal from '../Modals/UserDeleteModal'
 
 export default function Header () {
   const { data, status } = useSession()
@@ -18,6 +19,7 @@ export default function Header () {
   const { markdownInput } = useEditorInput()
   const [deleteDocModal, setDeleteDocModal] = useState(false)
   const [alertModal, setAlertModal] = useState(false)
+  const [userDeleteModal, setUserDeleteModal] = useState(false)
   const { id } = useParams()
   const userId = data?.user?.sub as string
   const { documentSelected } = useSelectedDocument({ id: id as string })
@@ -34,7 +36,9 @@ export default function Header () {
   }
 
   return (
-    <section className="flex justify-around bg-dark-gray-2 text-white text-sm w-full">
+    <section
+      className="flex justify-around bg-dark-gray-2 text-white text-sm w-full"
+      id='header'>
       <div
         className='flex-grow-1 flex justify-center items-center bg-dark-gray pb-6 pt-6 w-[3.9rem] hover:bg-orange cursor-pointer'
         onClick = {() => { toggleSidebar() }}>
@@ -53,7 +57,8 @@ export default function Header () {
                 markdownInput={markdownInput}
                 userId={userId}
                 documentName={documentName}
-                setDeleteDocModal={setDeleteDocModal}/>
+                setDeleteDocModal={setDeleteDocModal}
+                setUserDeleteModal={setUserDeleteModal} />
             : <HeaderUnauthenticated
                 setAlertModal={setAlertModal}/>
         }
@@ -69,6 +74,11 @@ export default function Header () {
         alertModal &&
         <AlertModal
           setAlertModal={setAlertModal} />
+      }
+      {
+        userDeleteModal &&
+        <UserDeleteModal
+          setUserDeleteModal={setUserDeleteModal} />
       }
     </section>
   )

@@ -40,6 +40,7 @@ export default function Header () {
       className="flex justify-around bg-dark-gray-2 text-white text-sm w-full"
       id='header'>
       <div
+        id='hamburger-menu'
         className='flex-grow-1 flex justify-center items-center bg-dark-gray pb-6 pt-6 w-[3.9rem] hover:bg-orange cursor-pointer'
         onClick = {() => { toggleSidebar() }}>
         <Image

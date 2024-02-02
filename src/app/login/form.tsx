@@ -4,6 +4,7 @@ import { signIn, useSession } from 'next-auth/react'
 import Image from 'next/image'
 import { redirect } from 'next/navigation'
 import { SignInSkeleton } from '../ui/skeletons'
+import Link from 'next/link'
 
 export default function LoginForm () {
   const { data, status } = useSession()
@@ -17,13 +18,17 @@ export default function LoginForm () {
   return (
     <div className="rounded-lg border bg-white text-card-foreground shadow-sm mx-auto max-w-sm md:w-full md:max-w-lg">
       <div className="flex flex-col px-6 pt-6 space-y-1 ">
-        <Image
-          src='/logos/logoLogin.svg'
-          alt='Markdown Editor Logo'
-          width={400}
-          height={400}
-          className='self-center mb-6'
-          priority/>
+        <Link
+          id='login-page-logo'
+          href='/'>
+          <Image
+            src='/logos/logoLogin.svg'
+            alt='Markdown Editor Logo'
+            width={400}
+            height={400}
+            className='self-center mb-6'
+            priority/>
+        </Link>
         <p className="text-sm text-[#2B2D31]">Please enter your username and password to log in.</p>
       </div>
       <div className="space-y-4 p-6">

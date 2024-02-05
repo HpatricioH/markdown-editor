@@ -1,6 +1,6 @@
 // http://localhost:3000/api/documents/[id]/all
 import prisma from '../../../../lib/db/db'
-import { type NextRequest, NextResponse } from 'next/server'
+import { NextResponse } from 'next/server'
 
 interface Document {
   name?: string
@@ -11,7 +11,7 @@ interface Document {
 }
 
 // Get all documents by user id
-export const GET = async (req: NextRequest, { params }: { params: { id: string } }) => {
+export const GET = async ({ params }: { params: { id: string } }) => {
   try {
     const id = params.id
 

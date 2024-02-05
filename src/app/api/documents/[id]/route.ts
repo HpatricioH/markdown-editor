@@ -20,7 +20,7 @@ export const GET = async (req: NextRequest, { params }: { params: { id: string }
 }
 
 // Delete one document by id
-export const DELETE = async ({ params }: { params: { id: string } }) => {
+export const DELETE = async (req: NextRequest, { params }: { params: { id: string } }) => {
   try {
     const id = params.id
 

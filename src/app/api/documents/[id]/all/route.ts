@@ -15,7 +15,6 @@ export const GET = async (req: NextRequest, { params }: { params: { id: string }
   try {
     const id = params.id
 
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
     const documents = await prisma.files.findMany({
       where: {
         userId: id

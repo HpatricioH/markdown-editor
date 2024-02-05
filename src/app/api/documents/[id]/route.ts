@@ -1,9 +1,9 @@
 // http://localhost:3000/api/documents/[id]
 import prisma from '../../../lib/db/db'
-import { NextResponse } from 'next/server'
+import { type NextRequest, NextResponse } from 'next/server'
 
 // Get one document by document id
-export const GET = async (req: NextResponse, { params }: { params: { id: string } }) => {
+export const GET = async (req: NextRequest, { params }: { params: { id: string } }) => {
   try {
     const id = params.id
 
@@ -20,7 +20,7 @@ export const GET = async (req: NextResponse, { params }: { params: { id: string 
 }
 
 // Delete one document by id
-export const DELETE = async (req: NextResponse, { params }: { params: { id: string } }) => {
+export const DELETE = async (req: NextRequest, { params }: { params: { id: string } }) => {
   try {
     const id = params.id
 

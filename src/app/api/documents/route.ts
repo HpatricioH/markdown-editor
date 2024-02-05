@@ -1,6 +1,6 @@
 // http://localhost:3000/api/documents
 import prisma from '../../lib/db/db'
-import { NextResponse } from 'next/server'
+import { type NextRequest, NextResponse } from 'next/server'
 
 interface Document {
   name: string
@@ -43,7 +43,7 @@ export const POST = async (req: Request) => {
 }
 
 // Update one document by id
-export const PUT = async (req: NextResponse) => {
+export const PUT = async (req: NextRequest) => {
   const { name, content, id } = await req.json() as { name: string, content: string, id: string }
 
   try {

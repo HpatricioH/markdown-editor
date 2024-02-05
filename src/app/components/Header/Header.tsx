@@ -21,9 +21,12 @@ export default function Header () {
   const [alertModal, setAlertModal] = useState(false)
   const [userDeleteModal, setUserDeleteModal] = useState(false)
   const { id } = useParams()
-  const userId = data?.user?.sub as string
+  // @ts-expect-error - sub is not defined in the type definition
+  const userId = data?.user?.id as string
   const { documentSelected } = useSelectedDocument({ id: id as string })
   const documentName = (documentSelected as { name: string }).name
+
+  console.log(data)
 
   const toggleSidebar = () => {
     const main = document.getElementById('main')

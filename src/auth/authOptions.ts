@@ -4,7 +4,7 @@ import prisma from '@/app/lib/db/db'
 import GoogleProvider from 'next-auth/providers/google'
 
 export const authOptions: NextAuthOptions = {
-  adapter: PrismaAdapter(prisma),
+  adapter: PrismaAdapter(prisma) as NextAuthOptions['adapter'],
   pages: {
     signIn: '/login'
   },
@@ -24,8 +24,15 @@ export const authOptions: NextAuthOptions = {
     },
     // If we want to access our extra user info from sessions we have to pass it the token here to get them in sync:
     session: async ({ session, token }) => {
-      session.user = token
-      return session
+      return {
+        ...session,
+        user: {
+          id: token.sub,
+          email: token.email,
+          name: token.name,
+          image: token.picture
+        }
+      }
     }
   }
 }

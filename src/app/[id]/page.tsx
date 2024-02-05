@@ -1,15 +1,13 @@
-'use client'
-
 import React from 'react'
 import LayoutHolder from '../components/Layout/LayoutHolder'
 import Header from '../components/Header/Header'
 import { redirect } from 'next/navigation'
 import MarkDownEditor from '../components/MarkDownEditor/MarkDownEditor'
-import { useSession } from 'next-auth/react'
+import { getServerSession } from 'next-auth'
 
-export default function Page () {
+export default async function Page () {
   // Get user session
-  const { data: session } = useSession()
+  const session = await getServerSession()
 
   if (!session) {
     redirect('/')

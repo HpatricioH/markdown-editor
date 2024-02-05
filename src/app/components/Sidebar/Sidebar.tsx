@@ -15,7 +15,10 @@ export default function Sidebar () {
   const { data: session, status } = useSession()
   const { setIsOpen } = useSideBar()
   const router = useRouter()
-  const userId = session?.user?.sub as string
+  // @ts-expect-error - sub is not defined in the type definition
+  const userId = session?.user?.id as string
+
+  console.log(userId)
 
   const handleNewDocument = () => {
     router.push('/')

@@ -18,8 +18,6 @@ export default function Sidebar () {
   // @ts-expect-error - sub is not defined in the type definition
   const userId = session?.user?.id as string
 
-  console.log(userId)
-
   const handleNewDocument = () => {
     router.push('/')
     const main = document.getElementById('main')

@@ -24,9 +24,7 @@ export default function HeaderForm ({ ...props }: HeaderFormProps) {
     const name = formData.get('name') as string
 
     if (id !== undefined) {
-      const updateResponse = await updateDocument({ id, name, content: markdownInput })
-      // TODO change this to show modal for confirmation of update.
-      console.log(updateResponse)
+      await updateDocument({ id, name, content: markdownInput })
     } else {
       await createDocument({ name, content: markdownInput, userId, createdAt: currentDate })
     }
@@ -34,7 +32,6 @@ export default function HeaderForm ({ ...props }: HeaderFormProps) {
 
   const deleteModalHandler = () => {
     id === undefined ? setUserDeleteModal(true) : setDeleteDocModal(true)
-    console.log(id)
   }
 
   return (

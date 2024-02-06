@@ -26,8 +26,6 @@ export default function Header () {
   const { documentSelected } = useSelectedDocument({ id: id as string })
   const documentName = (documentSelected as { name: string }).name
 
-  console.log(data)
-
   const toggleSidebar = () => {
     const main = document.getElementById('main')
     const sidebar = document.getElementById('sidebar')
